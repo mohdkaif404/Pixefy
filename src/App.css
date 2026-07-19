@@ -1,0 +1,30 @@
+*{
+    
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(255, 253, 251);
+}
+.user{
+    line-height: 1;
+}
+.daily-user{
+    animation: blink 2s ease 1s infinite alternate-reverse ;
+}
+.shadow-thin{
+    box-shadow: 0 0 2px 0px gray;
+}
+@keyframes blink {
+    0%{
+        box-shadow: 0 0 0px 0px oklch(55.3% 0.195 38.402);
+
+    }
+    100%{
+        box-shadow: 0 0 8px 1.5px oklch(55.3% 0.195 38.402);
+    }
+    
+}
+.logo,.heading{
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+}
