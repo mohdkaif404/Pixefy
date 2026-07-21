@@ -1,7 +1,8 @@
 import { Navbar } from './components/navbar/navbar';
 import "./App.css"
 import { Home } from './pages/Home';
-import { Liked } from './pages/Liiked';
+import { Liked } from './pages/Liiked';  
+import { Image } from './pages/image';
 function App() {
  
 
@@ -10,8 +11,8 @@ function App() {
     
    
      <Navbar></Navbar>
-     <Home></Home>
-     
+     {/* <Home></Home> */}
+     <Image></Image>
      {/* <Liked/> */}
      
     </>

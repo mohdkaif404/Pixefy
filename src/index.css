@@ -29,7 +29,7 @@ body{
     }
     
 }
-.logo,.heading,.liked{
+.logo,.heading,.liked,.image-name{
     font-family: "Fraunces", serif;
     font-weight: 500;
 }
