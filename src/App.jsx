@@ -11,8 +11,8 @@ function App() {
     
    
      <Navbar></Navbar>
-     {/* <Home></Home> */}
-     <Image></Image>
+     <Home></Home>
+     {/* <Image></Image> */}
      {/* <Liked/> */}
      
     </>

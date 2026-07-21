@@ -3,6 +3,6 @@ export function ButtonTwo({ click = () => { console.log("somthing clicked!!!") }
     let handleClick = (e) => { setactive?.(id); click?.(e); }
 
     return <>
-        <button className={`text-sm px-3 py-2 rounded-full bg-[#fcfcfc] shadow-md/15 text-black flex gap-1.5 items-center ${className}`} {...props} onClick={handleClick} >{children}{isActive && <div className={`hidden md:block ${classNameInner}`}>{text}</div>}</button>
+        <button className={`text-sm px-3 py-2 rounded-full bg-[#fcfcfc] shadow-md/15 text-black flex gap-1.5 items-center ${className}`} {...props} onClick={handleClick} >{children}{isActive && <div className={` ${isActive?"block":"hidden"} ${classNameInner}`}>{text}</div>}</button>
     </>
 }
