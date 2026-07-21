@@ -65,7 +65,7 @@ export default images;
 export function Home(){
     const [isActive,setActive]=useState(false);
     return <>
-    <div className="mt-35 bg-amber">
+    <div className="mt-35 bg-amber px-2 md:px-5">
         <div className="wrapper bg-blue-\\">
            <div className="max-w-300 bg-green- mx-auto w-[90%] md:w-[70%] flex flex-col items-center justify-center">
             <div className="flex w-fit rounded-full px-2 shadow-(--shadow-thin-1) bg-white/50 justify-center items-center gap-2 py-1 backdrop-blur-xl  border-gray-200/60"><div className="daily-user w-2 h-2 rounded-full bg-orange-700 "></div><div className="flex items-center justify-center "><h1 className="text-[10px] user text-gray-500">Curated Daily 10k+ User</h1></div></div>
@@ -75,8 +75,8 @@ export function Home(){
              {isActive&&<div className="w-full rounded-3xl shadow-(--shadow-thin-1) h-60 bg-white/60 backdrop-blur-3xl absolute bottom-0 left-0 translate-y-[105%]"></div>}</div>
         </div> 
     </div>
-    <Categories className={"mx-4 p-3"} />
-    <MasouryImage images={images}/>
+    
+    <MasouryImage images={images} flag={true}/>
     </div>
     </>
 }
