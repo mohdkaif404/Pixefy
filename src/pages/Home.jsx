@@ -1,5 +1,6 @@
 import { Categories } from "../components/categoriesBar/CateBar";
 import { Filter, Search,SlidersHorizontal } from 'lucide-react';
+import { MasouryImage } from "../components/masoury/masouryimage";
 import hills from '../assets/pexels-elias-obernosterer-2519830-10510523.jpg';
 import marcoPozzi from '../assets/pexels-marco-pozzi-2156102230-34038189.jpg';
 // import matreding1 from '../assets/pexels-matreding-34111858 (1).jpg';
