@@ -75,7 +75,7 @@ export function Home(){
         </div> 
     </div>
     <Categories className={"mx-4 p-3"} />
-    <masouryImage/>
+    <MasouryImage images={images}/>
     </div>
     </>
 }
