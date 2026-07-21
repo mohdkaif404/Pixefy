@@ -1,1 +1,35 @@
 @import "tailwindcss";
+*{
+    
+    box-sizing: border-box;
+    
+}
+:root{
+    --shadow-spread: 0 0 25px 0px rgba(128, 128, 128, 0.35);
+    --shadow-thin-1: 0 0 2px 0px rgba(128,128,128);
+    --background: #fdfcfb;
+}
+body{
+    background-color: var(--background);
+}
+.user{
+    line-height: 1;
+}
+.daily-user{
+    animation: blink 2s ease 1s infinite alternate-reverse ;
+}
+
+@keyframes blink {
+    0%{
+        box-shadow: 0 0 0px 0px oklch(55.3% 0.195 38.402);
+
+    }
+    100%{
+        box-shadow: 0 0 8px 1.5px oklch(55.3% 0.195 38.402);
+    }
+    
+}
+.logo,.heading,.liked{
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+}

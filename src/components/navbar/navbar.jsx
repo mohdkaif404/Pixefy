@@ -1,6 +1,6 @@
 import { Sparkles ,PencilSparkles, Heart, Compass} from 'lucide-react';
 import { ButtonTwo } from '../buttons/ButtonTwo';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 
 const arr=[0,1,2]
 export function Navbar(){
@@ -8,7 +8,7 @@ export function Navbar(){
     
     return <>
     <nav className="fixed top-3 w-screen z-503333 ">
-        <div className="nav-wrapper flex justify-between p-2 md:p-3  bg-white/30 shadow-thin backdrop-blur-xl shadow-black mx-3 md:mx-7 rounded-4xl">
+        <div className="nav-wrapper flex justify-between p-2 md:p-3  bg-white/30 shadow-(--shadow-spread) backdrop-blur-xl shadow-black mx-3 md:mx-7 rounded-4xl">
             <div className="flex gap-2 items-center"><div className="logo flex items-center bg-black/85 p-3 rounded-full"><Sparkles color='#ffffff' className='h-3 w-3 md:h-5 md:w-5' strokeWidth={1.2} /></div><span className="text-xl md:text-2xl">Pixefy</span></div>
          <ul className="flex gap-3">
             <ButtonTwo text='Discover' setactive={setactive} isActive={active==0} id={0} className='hover:bg-gray-200' ><Compass width={16} strokeWidth={1.7}/></ButtonTwo>
