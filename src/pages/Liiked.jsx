@@ -63,7 +63,7 @@ const images = [
 
 export function Liked(){
     return <>
-    <div className="mt-30 md:mt-20 px-3 md:px-10 ">
+    <div className="mt-20 md:mt-30 px-3 md:px-10 ">
         <h6 className="text-orange-600 font-semibold">Your collection</h6>
         <h3 className="text-4xl liked py-1">Liked Images</h3>
         <h6 className="text-gray-600">{'2'} Liked Images</h6>

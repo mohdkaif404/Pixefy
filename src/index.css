@@ -33,3 +33,6 @@ body{
     font-family: "Fraunces", serif;
     font-weight: 500;
 }
+*::-webkit-scrollbar{
+    display: none;
+}

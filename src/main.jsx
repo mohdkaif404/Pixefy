@@ -6,6 +6,7 @@ import {createBrowserRouter, RouterProvider} from "react-router"
 import { Home } from './pages/Home.jsx'
 import { Liked } from './pages/Liiked.jsx'
 import { Image } from './pages/image.jsx'
+import { Ai } from './pages/Ai.jsx'
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/images",
-        element:<Image/>
+        element:<Ai/>
       }
     ]
   },
