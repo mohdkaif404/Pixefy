@@ -1,5 +1,5 @@
 
-export function ButtonTwo({ click = () => { console.log("somthing clicked!!!") }, children = null, className = "", text = "Button", classNameInner = "", id, isActive, setactive, ...props }) {
+export function ButtonTwo({ click = () => { console.log("somthing clicked!!!") }, children = null, className = "", text = "Button", classNameInner = "", id, isActive=true, setactive, ...props }) {
     let handleClick = (e) => { setactive?.(id); click?.(e); }
 
     return <>
