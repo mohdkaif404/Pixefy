@@ -12,6 +12,8 @@ import { useState } from "react";
 import { MasouryImage } from '../components/masoury/masouryimage';
 import { Heart } from 'lucide-react';
 import { ButtonTwo } from '../components/buttons/ButtonTwo';
+import { ImageGrid } from '../components/masoury/ImageGrid';
+import { NoLikedCard } from '../components/Cards/NoLikedCard';
 const images = [
   {
     id: 1,
@@ -63,20 +65,13 @@ const images = [
 
 export function Liked(){
     return <>
-    <div className="mt-20 md:mt-30 px-3 md:px-10 ">
+    <div className="mt-25 md:mt-30 px-3 md:px-10 ">
         <h6 className="text-orange-600 font-semibold">Your collection</h6>
         <h3 className="text-4xl liked py-1">Liked Images</h3>
         <h6 className="text-gray-600">{'2'} Liked Images</h6>
         <div className="flex justify-center items-center ">
-      <div className="p-10 shadow-(--shadow-thin-1) rounded-3xl my-4">
-        <div className="heart w-fit p-3 mx-auto bg-gray-200 rounded-full mb-2 text-gray-500"><Heart/></div>
-        <h4 className='heading text-center text-3xl my-3'>No likes yet</h4>
-        <h1 className='text-gray-500 text-center my-3'>Tap the heart on any image to build your private collection.</h1>
-        <ButtonTwo className='bg-black text-white mt-3 mx-auto py-3 px-4' text="Discover Images" ></ButtonTwo>
-
-      </div>
     </div>
-    <MasouryImage images={images}/>
+    {true?<ImageGrid images={images}/>:<NoLikedCard/>}
     </div>
     
     </>
