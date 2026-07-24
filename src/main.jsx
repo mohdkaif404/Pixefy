@@ -15,16 +15,17 @@ const router = createBrowserRouter([
     children:[
       {
         path:"/",
-        element:<Home/>
+        element:<Home/>,
       },
       {
         path:"/liked",
         element:<Liked/>
       },
       {
-        path:"/images",
+        path:"/generate",
         element:<Ai/>
       }
+
     ]
   },
 ]);
