@@ -25,24 +25,9 @@ export function MasouryImage({images,className,flag}){
     const [category,setCategory]=useState(cat[0]);
     const [imagejson,setimagejson]=useState([]);
     useEffect(()=>{
-        
         let query = category;
-
-client.photos.search({ query, per_page: 40 }).then(photos => {setimagejson(photos); console.log(photos)});
-        // async function fetchimage(){
-        //     const header=await fetch(`https://api.pexels.com/v1/search?query=people&page=1`,{
-        //    method:"GET",
-        //    header:{
-        //     Accept: "application/json",
-        //     "Content-Type": "application/json",
-        //     "User-Agent": "Pexels/JavaScript",
-        //     Authorization: apikey,
-        //    }
-        // });
-        // imagejson=await header;
-        // } 
-        // fetchimage();
-
+        client.photos.search({ query, per_page: 40 }).then(photos => {setimagejson(photos); });
+       
     },[category]);
     return <>
     <div className={`flex justify-center items-center overflow-x-auto md:flex-wrap gap-2 text-sm md:text-base py-1`}><Categories  cat={cat} handleclick={setCategory}/></div>

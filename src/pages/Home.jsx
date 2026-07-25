@@ -20,7 +20,7 @@ export function Home() {
                     </div>
                 </div>
             </div>
-            <MasouryImage images={images} flag={true} />
+            <MasouryImage />
         </div>
     </>
 }
