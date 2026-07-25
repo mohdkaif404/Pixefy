@@ -8,6 +8,8 @@ export function GeneratorWrapper(){
     const [prompt,setPrompt]=useState("A cat");
     count++;
     useEffect(()=>{
+     
+        
         console.log(prompt);
     
         
@@ -15,7 +17,7 @@ export function GeneratorWrapper(){
     return<>
     <div className="generate-wrapper my-5 w-full md:w-[70%] mx-auto">
        <GeneratorPanel setPrompt={setPrompt}/>
-       <ImageGrid images={[
+       <ImageGrid images={[ 
              {
                 id: count,
                 name: 'Hills',

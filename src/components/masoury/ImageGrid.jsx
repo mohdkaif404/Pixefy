@@ -4,8 +4,8 @@ export function ImageGrid({ images ,className}) {
         {images.map((item) => (
             <div key={item.id} className="rounded-3xl overflow-hidden mb-2 md:mb-3">
                 <img
-                    src={item.image}
-                    alt=""
+                    src={item.src.original}
+                    alt={item.alt}
                     className=""
                 />
             </div>
