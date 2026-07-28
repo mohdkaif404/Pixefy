@@ -1,8 +1,12 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Categories } from "../categoriesBar/CateBar"
 import { ImageGrid } from "./ImageGrid";
-import {createClient} from 'pexels'
+
+import { useDebounceFetcher } from "../../hooks/useDebounceFetcher";
+import { ArrowRightIcon } from "lucide-react";
+import { createClient } from "pexels";
+
 
 const cat = [
   "All",
@@ -18,31 +22,35 @@ const cat = [
   "Interiors",
   "Street"
 ];
-
-const apikey='rIq1qVLsxVgPM33XzNmn8YcJAsk2hNPkVMh9xJp8LfjHmvkmyLEOZMaF';
-const client=new createClient(apikey);
-let timerId=undefined;
-let count=0; 
-export function MasouryImage({images,prompt,className,flag}){
+const apiKey='rIq1qVLsxVgPM33XzNmn8YcJAsk2hNPkVMh9xJp8LfjHmvkmyLEOZMaF';
+const client=new createClient(apiKey);
+export function MasouryImage({images,prompt,className,filters}){
     const [category,setCategory]=useState(cat[0]);
-    const [imagejson,setimagejson]=useState([]);
+    const [imagejson,setimagejson]=useState({});
+    const elemRef=useRef(null);
+    
+    const query=prompt||category;
+    
+    useDebounceFetcher(query,setimagejson,client,filters);
+    
     useEffect(()=>{
-        let query = category;
-        client.photos.search({ query, per_page: 40 }).then(photos => {setimagejson(photos); });
-       
-    },[category]);
-    useEffect(()=>{
-        let query=prompt==""?category:prompt;
-        clearTimeout(timerId);
-        timerId=setTimeout(() => {
-            client.photos.search({ query, per_page: 40 }).then(photos => {setimagejson(photos); });
-            console.log(count);
-            count++; 
-        }, 1000);
+      let element;
+      const observer=new IntersectionObserver(async (e)=>{
+        if(e[0].isIntersecting){
+          observer.unobserve(element);
+          client.photos.search({ query, per_page: 40, page:imagejson.page+1,orientation:filters[0] }).then(photos => { console.log(photos); setimagejson((prev)=>{ return {...photos,photos:[...prev.photos,...photos.photos]}}); console.log()});
+        }
         
-    },[prompt])
+      },{threshold:1});
+      setTimeout(() => {
+        element=elemRef.current.lastElementChild;
+        observer.observe(element);
+      }, 1000);
+    },[imagejson])
+              
+      
     return <>
     <div className={`flex justify-center items-center overflow-x-auto md:flex-wrap gap-2 text-sm md:text-base py-1`}><Categories  cat={cat} handleclick={setCategory}/></div>
-    {imagejson.photos&&<ImageGrid images={imagejson.photos}/>}
+    {imagejson.photos&&<ImageGrid images={imagejson.photos} elemRef={elemRef}/>}
     </>
 }

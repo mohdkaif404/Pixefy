@@ -35,7 +35,7 @@ export function Navbar(){
          <ul className="flex gap-3">
             {nav.map((elem)=>
                 elem.to!='/liked'?<ButtonTwo text={active==elem.id?elem.lable:''} onclick={(e)=>{navigate(elem.to); setactive(elem.id);}} className='hover:bg-gray-200 transition-all' ><Compass width={16} strokeWidth={1.7}/></ButtonTwo>:
-                                  <span className='relative'><ButtonTwo onclick={(e)=>{navigate(elem.to); setactive(elem.id);}} text={active==elem.id?'Liked ':''} className='hover:bg-gray-200 transition-all'><Heart width={16} strokeWidth={1.7} className='text-transparent' fill='oklch(0.66 0.25 25.25)' /></ButtonTwo><div className='bg-red-500 text-white rounded-full px-1 py-1 absolute text-[10px] -top-1 -right-1'>100</div></span>
+                <span className='relative'><ButtonTwo onclick={(e)=>{navigate(elem.to); setactive(elem.id);}} text={active==elem.id?'Liked ':''} className='hover:bg-gray-200 transition-all'><Heart width={16} strokeWidth={1.7} className='text-transparent' fill='oklch(0.66 0.25 25.25)' /></ButtonTwo><div className='bg-red-500 text-white rounded-full px-1 py-1 absolute text-[10px] -top-1 -right-1'>100</div></span>
             )}
     
          </ul>
