@@ -38,7 +38,7 @@ export function MasouryImage({images,prompt,className,filters}){
       const observer=new IntersectionObserver(async (e)=>{
         if(e[0].isIntersecting){
           observer.unobserve(element);
-          client.photos.search({ query, per_page: 40, page:imagejson.page+1,orientation:filters[0] }).then(photos => { console.log(photos); setimagejson((prev)=>{ return {...photos,photos:[...prev.photos,...photos.photos]}}); console.log()});
+          client.photos.search({ query, per_page: 40, page:imagejson.page+1,orientation:filters[0],size:filters[1],color:filters[2] }).then(photos => { console.log(photos); setimagejson((prev)=>{ return {...photos,photos:[...prev.photos,...photos.photos]}}); console.log()});
         }
         
       },{threshold:1});

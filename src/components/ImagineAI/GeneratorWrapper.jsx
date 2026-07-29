@@ -16,7 +16,7 @@ export function GeneratorWrapper(){
                 id: count,
                 name: 'Hills',
                 src: {
-                    medium:`https://image.pollinations.ai/prompt/${prompt}`
+                    large:`https://image.pollinations.ai/prompt/${prompt}`
                 },
                 alt:"AI Generated",
                 

@@ -1,15 +1,28 @@
-
 export const filter = [
-    {
-        lable: "Orientation",
-        Cat: ["All", "Portrait", "Landscape", "Square"]
-    },
-    {
-        lable: "Trending",
-        Cat: ["All", "Cool", "Mono", "Vibrant"]
-    },
-    {
-        lable: "Sort",
-        Cat: ["Trending", "Newest", "Popular"]
-    }
-]
+  {
+    label: "Orientation",
+    cat: ["All", "Portrait", "Landscape", "Square"],
+  },
+  {
+    label: "Size",
+    cat: ["All", "Small", "Medium", "Large"],
+  },
+  {
+    label: "Color",
+    cat: [
+      "All",
+      "Black",
+      "White",
+      "Gray",
+      "Red",
+      "Orange",
+      "Yellow",
+      "Green",
+      "Turquoise",
+      "Blue",
+      "Violet",
+      "Pink",
+      "Brown",
+    ],
+  },
+];
