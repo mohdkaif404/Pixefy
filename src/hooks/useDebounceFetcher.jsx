@@ -14,7 +14,7 @@ export function useDebounceFetcher(param,setimagejson,client,filter){
         clearTimeout(timerId.current);
         timerId.current=setTimeout(() => {
 
-            client.photos.search({ query, per_page: 40,orientation:filter[0],size:filter[1],color:filter[2] }).then(photos => { console.log(photos); setimagejson(photos); console.log()});
+            client.photos.search({ query, per_page: 40,...filter }).then(photos => { console.log(photos); setimagejson(photos); console.log()});
            
         }, 300);
         

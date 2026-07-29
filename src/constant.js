@@ -27,7 +27,9 @@ export const filter = [
   },
 ];
 
-export const cat = [
+export const cat = [{
+    label:"home",
+    cat:[
   "All",
   "Nature",
   "Architecture",
@@ -40,7 +42,8 @@ export const cat = [
   "Fashion",
   "Interiors",
   "Street"
-];
+] 
+}];
 
 export const apiKey='rIq1qVLsxVgPM33XzNmn8YcJAsk2hNPkVMh9xJp8LfjHmvkmyLEOZMaF';
 

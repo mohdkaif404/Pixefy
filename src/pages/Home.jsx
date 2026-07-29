@@ -1,17 +1,20 @@
 import { Categories } from "../components/categoriesBar/CateBar";
-import { Search } from "lucide-react";
+import { FileTerminal, Search } from "lucide-react";
 import { MasouryImage } from "../components/masoury/masouryimage";
 import { images } from "./utils";
 import { useRef, useState } from "react";
 import { FilterButton } from "../components/buttons/FilterButton";
 
-
+const filters={
+    'orientation':"All",
+    'size':"All",
+    'color':"All",
+}
 export function Home() {
     const [prompt,setPrompt]=useState("");
-    const [filterOrientaion,setFilterOrientaion]=useState("All")
-    const [filterTrending,setFilterTrending]=useState("All");
-    const [filterSort,setFilterSort]=useState("Trending");
-    console.log(filterOrientaion)
+    const [filter,setFilter]=useState(filters)
+    console.log(filter)
+
     return <>
         <div className="mt-35 bg-amber px-2 md:px-5">
             <div className="head-wrapper">
@@ -20,13 +23,12 @@ export function Home() {
                     <h1 className="text-center bg-red- text-4xl md:text-6xl heading py-3 ">Find <span className="text-orange-700">Images</span> that moves you</h1>
                     <h5 className="text-gray-500 text-center text-sm md:text-base">A quiet, beautiful place to discover, save and generate visuals - builtfor moodboar, decks and daydreas</h5>
                     <div className="w-full  relative md:w-[80%] flex  bg-white/30 shadow-(--shadow-spread) backdrop-blur-xl p-3 rounded-full my-5 items-center"><Search className="  p-2" width={35} height={35} /><input type="search" placeholder="search" className="grow focus:outline-0" onKeyDown={(e)=>{ setPrompt(e.target.value); }}/>
-                    <FilterButton setFilter={[setFilterOrientaion,setFilterTrending,setFilterSort]}/>
+                    <FilterButton setFilter={setFilter}/>
                     </div>
                 </div>
             </div>
-            <MasouryImage prompt={prompt} filters={[filterOrientaion,filterTrending,filterSort]}/>
+            <MasouryImage prompt={prompt} filters={filter}/>
         </div>
     </>
 }
 
-7
