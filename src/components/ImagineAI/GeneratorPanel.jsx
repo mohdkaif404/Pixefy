@@ -2,8 +2,8 @@ import { Categories } from "../categoriesBar/CateBar"
 import { ButtonTwo } from "../buttons/ButtonTwo"
 import { PencilSparklesIcon } from "lucide-react"
 import { use, useState } from "react"
+import { aicat } from "../../constant"
 
-const aicat=['Photoreal',"Cinematic","Minimal","Watercolor","Neon","Editorial"]
 export function GeneratorPanel({setPrompt}){
     const [str,setstr]=useState('');
     return <>

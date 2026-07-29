@@ -2,31 +2,18 @@
 import { useEffect, useRef, useState } from "react";
 import { Categories } from "../categoriesBar/CateBar"
 import { ImageGrid } from "./ImageGrid";
-
+import { cat , apiKey} from "../../constant";
 import { useDebounceFetcher } from "../../hooks/useDebounceFetcher";
 import { ArrowRightIcon } from "lucide-react";
 import { createClient } from "pexels";
+import { MasouryShimmer } from "../shimmers/masouryShimmer";
 
 
-const cat = [
-  "All",
-  "Nature",
-  "Architecture",
-  "People",
-  "Travel",
-  "Animals",
-  "Food",
-  "Technology",
-  "Abstract",
-  "Fashion",
-  "Interiors",
-  "Street"
-];
-const apiKey='rIq1qVLsxVgPM33XzNmn8YcJAsk2hNPkVMh9xJp8LfjHmvkmyLEOZMaF';
+
 const client=new createClient(apiKey);
 export function MasouryImage({images,prompt,className,filters}){
     const [category,setCategory]=useState(cat[0]);
-    const [imagejson,setimagejson]=useState({});
+    const [imagejson,setimagejson]=useState(undefined);
     const elemRef=useRef(null);
     
     const query=prompt||category;
@@ -51,6 +38,6 @@ export function MasouryImage({images,prompt,className,filters}){
       
     return <>
     <div className={`flex justify-center items-center overflow-x-auto md:flex-wrap gap-2 text-sm md:text-base py-1`}><Categories  cat={cat} handleclick={setCategory}/></div>
-    {imagejson.photos&&<ImageGrid images={imagejson.photos} elemRef={elemRef}/>}
+    {imagejson?<ImageGrid images={imagejson.photos} elemRef={elemRef}/>:<MasouryShimmer/>}
     </>
 }
