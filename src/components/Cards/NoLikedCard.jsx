@@ -1,5 +1,5 @@
 import { ButtonTwo } from "../buttons/ButtonTwo"
-
+import { Heart } from "lucide-react"
 export function NoLikedCard(){
     return<>
     <div className="p-10 shadow-(--shadow-thin-1) rounded-3xl my-4">

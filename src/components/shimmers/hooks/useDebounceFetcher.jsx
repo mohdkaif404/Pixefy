@@ -1,6 +1,6 @@
 import {createClient} from 'pexels'
 import { useEffect, useRef, useState } from 'react';
-import { apiKey } from '../constant';
+import { apiKey } from '../../../constant';
 
 
 export function useDebounceFetcher(param,setimagejson,client,filter){
@@ -14,7 +14,7 @@ export function useDebounceFetcher(param,setimagejson,client,filter){
         clearTimeout(timerId.current);
         timerId.current=setTimeout(() => {
 
-            client.photos.search({ query, per_page: 40,...filter }).then(photos => { console.log(photos); setimagejson(photos); console.log()});
+            client.photos.search({ query, per_page: 40,...filter }).then(photos => {  setimagejson(photos); console.log()});
            
         }, 300);
         

@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Categories } from "../categoriesBar/CateBar"
 import { ImageGrid } from "./ImageGrid";
 import { cat , apiKey} from "../../constant";
-import { useDebounceFetcher } from "../../hooks/useDebounceFetcher";
+import { useDebounceFetcher } from "../shimmers/hooks/useDebounceFetcher";
 import { ArrowRightIcon } from "lucide-react";
 import { createClient } from "pexels";
 import { MasouryShimmer } from "../shimmers/masouryShimmer";
@@ -12,12 +12,12 @@ import { MasouryShimmer } from "../shimmers/masouryShimmer";
 
 const client=new createClient(apiKey);
 export function MasouryImage({images,prompt,className,filters}){
-    const [category,setCategory]=useState({"home":cat[0].cat});
+    const [category,setCategory]=useState({"home":"All"});
     const [imagejson,setimagejson]=useState(undefined);
     const elemRef=useRef(null);
     
     const query=prompt||category.home;
-    
+    console.log(filters)
     useDebounceFetcher(query,setimagejson,client,filters);
     
     useEffect(()=>{
@@ -37,7 +37,7 @@ export function MasouryImage({images,prompt,className,filters}){
               
       
     return <>
-    <div className={`flex justify-center items-center overflow-x-auto md:flex-wrap gap-2 text-sm md:text-base py-1`}><Categories label={cat[0].label.toLocaleLowerCase()} cat={cat[0].cat} handleclick={setCategory}/></div>
+    <div className={`flex justify-center items-center overflow-x-auto md:flex-wrap gap-2 text-sm md:text-base py-1`}><Categories label={cat[0].label.toLocaleLowerCase()} cat={cat[0].cat} active={category.home.toLocaleLowerCase()} handleclick={setCategory}/></div>
     {imagejson?<ImageGrid images={imagejson.photos} elemRef={elemRef}/>:<MasouryShimmer/>}
     </>
 }

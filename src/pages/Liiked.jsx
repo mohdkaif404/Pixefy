@@ -14,6 +14,7 @@ import { Heart } from 'lucide-react';
 import { ButtonTwo } from '../components/buttons/ButtonTwo';
 import { ImageGrid } from '../components/masoury/ImageGrid';
 import { NoLikedCard } from '../components/Cards/NoLikedCard';
+import { useSelector } from 'react-redux';
 const images = [
   {
     id: 1,
@@ -64,14 +65,16 @@ const images = [
 
 
 export function Liked(){
+    const likedCount=useSelector((state)=>{ return state.liked.likedCount; })
+    console.log(likedCount); 
     return <>
     <div className="mt-25 md:mt-30 px-3 md:px-10 ">
         <h6 className="text-orange-600 font-semibold">Your collection</h6>
         <h3 className="text-4xl liked py-1">Liked Images</h3>
-        <h6 className="text-gray-600">{'2'} Liked Images</h6>
+        <h6 className="text-gray-600">{likedCount} Liked Images</h6>
         <div className="flex justify-center items-center ">
     </div>
-    {true?<ImageGrid images={images}/>:<NoLikedCard/>}
+    {likedCount>0?<ImageGrid images={[]}/>:<NoLikedCard/>}
     </div>
     
     </>

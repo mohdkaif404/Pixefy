@@ -7,7 +7,8 @@ import { Home } from './pages/Home.jsx'
 import { Liked } from './pages/Liiked.jsx'
 import { Image } from './pages/image.jsx'
 import { Ai } from './pages/Ai.jsx'
-
+import { store } from './store/ReduxStore.jsx'
+import { Provider } from 'react-redux'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path:"/generate",
         element:<Ai/>
+      },
+      {
+        path:"/images/:id",
+        element:<Image/>
       }
 
     ]
@@ -31,6 +36,8 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router}></RouterProvider>
+
+  <Provider store={store}><RouterProvider router={router}></RouterProvider></Provider>
+  
   
 )
