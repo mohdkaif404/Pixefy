@@ -1,6 +1,5 @@
 import { GeneratorPanel } from "./GeneratorPanel";
 import { ImageGrid } from "../masoury/ImageGrid";
-import { images } from "../../pages/utils";
 import { useEffect, useState } from "react";
 let img=[]
 let count=0;

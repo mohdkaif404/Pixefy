@@ -1,11 +1,9 @@
 import { ArrowLeft, ArrowRightIcon, MoveLeft,Download, ArrowDown, ChevronDown, Heart, Share, Share2, TruckElectric} from "lucide-react";
 import { ButtonTwo } from "../components/buttons/ButtonTwo";
-import { images } from "./utils";
 import { MasouryImage } from "../components/masoury/masouryimage";
 import { Filter, Search,SlidersHorizontal } from 'lucide-react';
 import { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router";
-import hills from '../assets/pexels-elias-obernosterer-2519830-10510523.jpg';
 import { createClient } from "pexels";
 import { apiKey } from "../constant";
 import { useDispatch, useSelector } from "react-redux";
@@ -53,7 +51,7 @@ export function Image(){
             </div>
         </div>
         <div className="flex justify-between items-center"><h3 className="heading text-2xl md:text-4xl"><span className="text-orange-700">More</span> Like this</h3><Link to={"/"}><span className="text-gray-600 px-1 text-sm">Explore all</span><ArrowRightIcon className="inline text-gray-500 h-3 w-3" strokeWidth={1.5}/></Link></div>
-        <MasouryImage images={images} className={"px-0 mx-0"}></MasouryImage>
+        <MasouryImage images={[ImageData]} className={"px-0 mx-0"}></MasouryImage>
     </div>}
     </>
 }

@@ -1,7 +1,6 @@
 import { Categories } from "../components/categoriesBar/CateBar";
 import { FileTerminal, Search } from "lucide-react";
 import { MasouryImage } from "../components/masoury/masouryimage";
-import { images } from "./utils";
 import { useRef, useState } from "react";
 import { FilterButton } from "../components/buttons/FilterButton";
 import { useLocation, useNavigate } from "react-router";
