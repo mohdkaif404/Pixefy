@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRightIcon, MoveLeft } from "lucide-react";
+import { ArrowLeft, ArrowRightIcon, MoveLeft,Download, ArrowDown, ChevronDown, Heart, Share, Share2, TruckElectric} from "lucide-react";
 import { ButtonTwo } from "../components/buttons/ButtonTwo";
 import { images } from "./utils";
 import { MasouryImage } from "../components/masoury/masouryimage";
@@ -8,14 +8,26 @@ import { Link, useLocation, useParams } from "react-router";
 import hills from '../assets/pexels-elias-obernosterer-2519830-10510523.jpg';
 import { createClient } from "pexels";
 import { apiKey } from "../constant";
+import { useDispatch, useSelector } from "react-redux";
+import { incrementLike,decrementLike } from "../store/ReduxStore";
 const client=createClient(apiKey);
+
 export function Image(){
+    let liked=false;
     const [ImageData,setImageData]=useState(false)
-    const nav=useLocation();
-    const {id}=useParams();
+    const id=useParams().id.toString();
+    const {state}=useLocation();
+    const likedArray=useSelector((state)=>{ return state.liked.imagesLiked; });
+    likedArray.forEach(element => {
+        if(element.id==state.id) liked=true;
+    });
+    const disapatch=useDispatch();
+    console.log(state);
+    console.log(liked,likedArray);
     
+
     useEffect(()=>{
-        if(nav.state) setImageData(nav.state);
+        if(state) setImageData(state);
         else{client.photos.show({id:id}).then((val)=>{setImageData(val)}); }
     },[])
     return <>
@@ -27,7 +39,11 @@ export function Image(){
                 <div className="bg-gray-300 text-[10px] font-semibold text-gray-500 w-fit rounded-full p-1 px-2">STREET</div>
                 <div className="image-name py-2 text-4xl">{ImageData.photographer}</div>
                 <div className="image-description text-gray-500">{ImageData.alt}</div>
-                <div className="button-wrapper"></div>
+                <div className="button-wrapper flex gap-3 my-6 ">
+                <ButtonTwo text="Like" className={`${liked?'bg-red-500 text-white':''} transition-all` } onclick={()=>{ !liked?disapatch(incrementLike(state)):disapatch(decrementLike(state)); }}><Heart strokeWidth={2.2} width={15} fill="white"/></ButtonTwo>
+                <ButtonTwo text={<div className="flex justify-center items-center gap-1">Download<ChevronDown strokeWidth={2.2} width={15}/></div>} className="bg-black text-white"><Download width={15} strokeWidth={2.2}/></ButtonTwo>
+                <ButtonTwo text="Share"><Share2 strokeWidth={2.2} width={15}/></ButtonTwo>
+                </div>
                 <div className="grid grid-cols-2 grid-rows-2 p-2 shadow-(--shadow-thin-1) bg-white rounded-2xl my-5">
                     <div className="p-1"><div className="text-gray-500 text-sm">Dimensions</div><div className="">600 x 500</div></div>
                     <div className="p-1"><div className="text-gray-500 text-sm">Category</div><div className="">Street</div></div>

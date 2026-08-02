@@ -1,12 +1,12 @@
 import { configureStore, createSlice   } from "@reduxjs/toolkit";
 
 let state={
-    likedCount:parseInt(localStorage.getItem("likedCount"))||1,
+    likedCount:parseInt(localStorage.getItem("likedCount"))||0,
     imagesLiked:JSON.parse(localStorage.getItem("imagesLiked"))||[]
 }
 
 const likedSlice=createSlice({
-    name:"liked",
+    name:"likeds",
     initialState:state,
     reducers:{
         incrementLike:(state,action)=>{
@@ -19,7 +19,8 @@ const likedSlice=createSlice({
         decrementLike:(state,action)=>{
             state.likedCount-=1;
             localStorage.setItem("likedCount",state.likedCount.toString())
-            const arr=state.imagesLiked.filter((elem)=>{ if(action.payload!=elem){ return elem; }})
+            const arr=state.imagesLiked.filter((elem)=>{ if(action.payload.id!=elem.id){ return elem; }});
+            state.imagesLiked=arr;
             localStorage.setItem("imagesLiked",JSON.stringify(arr));
             return state;
         }
@@ -27,7 +28,7 @@ const likedSlice=createSlice({
     }
 })
 console.log(likedSlice)
-const {decrementLike,incrementLike}=likedSlice.actions;
+export const {decrementLike,incrementLike}=likedSlice.actions;
 const likedReducer=likedSlice.reducer;
 
 
