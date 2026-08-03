@@ -8,6 +8,7 @@ import { createClient } from "pexels";
 import { apiKey } from "../constant";
 import { useDispatch, useSelector } from "react-redux";
 import { incrementLike,decrementLike } from "../store/ReduxStore";
+import { ImageShimmer } from "../components/shimmers/imageShimmer";
 const client=createClient(apiKey);
 
 export function Image(){
@@ -22,30 +23,37 @@ export function Image(){
     const disapatch=useDispatch();
     console.log(state);
     console.log(liked,likedArray);
-    
+    const [isActive,setActive]=useState(false);
 
     useEffect(()=>{
         if(state) setImageData(state);
         else{client.photos.show({id:id}).then((val)=>{setImageData(val)}); }
+        console.log(ImageData)
     },[])
     return <>
     {ImageData&&<div className="bg-blue- my-26 px-3 md:px-20 h-screen">
         <Link to={'/'}><ButtonTwo text="Back" isActive={true}><ArrowLeft className="w-5 aspect-square" strokeWidth={1.2}/></ButtonTwo></Link>
         <div className="image-wrapper flex gap-10 my-6 flex-col md:flex-row">
-            <div className="image w-full md:w-[60%] rounded-3xl overflow-hidden"><img src={ImageData.src.original} alt="" className="w-full aspect-square object-cover"/></div>
+            <div className="image w-full md:w-[60%] rounded-3xl overflow-hidden">{ImageData.src.original?<img src={ImageData.src.original} alt="" className="w-full aspect-square object-cover"/>:<ImageShimmer/>}</div>
             <div className="image-info">
                 <div className="bg-gray-300 text-[10px] font-semibold text-gray-500 w-fit rounded-full p-1 px-2">STREET</div>
                 <div className="image-name py-2 text-4xl">{ImageData.photographer}</div>
                 <div className="image-description text-gray-500">{ImageData.alt}</div>
                 <div className="button-wrapper flex gap-3 my-6 ">
-                <ButtonTwo text="Like" className={`${liked?'bg-red-500 text-white':''} transition-all` } onclick={()=>{ !liked?disapatch(incrementLike(state)):disapatch(decrementLike(state)); }}><Heart strokeWidth={2.2} width={15} fill="white"/></ButtonTwo>
-                <ButtonTwo text={<div className="flex justify-center items-center gap-1">Download<ChevronDown strokeWidth={2.2} width={15}/></div>} className="bg-black text-white"><Download width={15} strokeWidth={2.2}/></ButtonTwo>
+                <ButtonTwo text="Like" className={`${liked?'bg-red-500 text-white':'hover:bg-red-300'}  transition-all` } onclick={()=>{ !liked?disapatch(incrementLike(state)):disapatch(decrementLike(state)); }}><Heart strokeWidth={2.2} width={15} fill="white"/></ButtonTwo>
+                <div className="Download relative" onClick={()=> {setActive(!isActive)}}><ButtonTwo text={<div className="flex justify-center items-center gap-1 ">Download<ChevronDown strokeWidth={2.2} width={15}/></div>} className="bg-black text-white hover:bg-black/90"><Download width={15} strokeWidth={2.2}/></ButtonTwo>
+                {isActive&&<div className="overflow-hidden rounded-2xl shadow-(--shadow-thin-1) bg-white absolute bottom-0 left-0 translate-y-[105%] text-xs w-full">
+                    <div className="cursor-pointer w-full py-2 px-3 flex gap-1 justify-between items-center hover:bg-gray-200 transition-all">Original<span className="text-xs text-gray-400">800 x 540</span></div>
+                    <div className="cursor-pointer w-full py-2 px-3 flex gap-1 justify-between items-center hover:bg-gray-200 transition-all">Small<span className="text-xs text-gray-400">400px</span></div>
+                    <div className="cursor-pointer w-full py-2 px-3 flex gap-1 justify-between items-center hover:bg-gray-200 transition-all">Medium<span className="text-xs text-gray-400">500px</span></div>
+                    <div className="cursor-pointer w-full py-2 px-3 flex gap-1 justify-between items-center hover:bg-gray-200 transition-all">Large<span className="text-xs text-gray-400">700px</span></div>
+                    </div>}</div>
                 <ButtonTwo text="Share"><Share2 strokeWidth={2.2} width={15}/></ButtonTwo>
                 </div>
                 <div className="grid grid-cols-2 grid-rows-2 p-2 shadow-(--shadow-thin-1) bg-white rounded-2xl my-5">
                     <div className="p-1"><div className="text-gray-500 text-sm">Dimensions</div><div className="">600 x 500</div></div>
                     <div className="p-1"><div className="text-gray-500 text-sm">Category</div><div className="">Street</div></div>
-                    <div className="p-1"><div className="text-gray-500 text-sm">Author</div><div className="">{ImageData.photographer}</div></div>
+                    <div className="p-1"><div className="text-gray-500 text-sm">Author</div><div className="">{ImageData.photographer||'AI Generated'}</div></div>
                     <div className="p-1"><div className="text-gray-500 text-sm">License</div><div className="">Pixefy free</div></div>
                 </div>
             </div>

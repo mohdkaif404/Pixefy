@@ -7,11 +7,11 @@ export function ImageGrid({ images, className, elemRef }) {
     return <>
         <div className={`massoury columns-2 md:columns-3 gap-2 md:gap-3 w-full my-5  ${className}`} ref={elemRef}>
             {images.map((item, idx) => (
-                <Link to={`images/${item.id}`} state={item} >
+                <Link to={`/images/${item.id}`} state={item} >
                     <div key={idx} className="rounded-3xl overflow-hidden mb-2 md:mb-3 relative" >
                         
                         <img
-                            src={item.src.large}
+                            src={item.src.large||item.src.original||item.src.medium}
                             alt={item.alt}
                             className="w-full h-full object-cover"
                         />
