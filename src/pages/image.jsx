@@ -9,12 +9,22 @@ import { apiKey } from "../constant";
 import { useDispatch, useSelector } from "react-redux";
 import { incrementLike,decrementLike } from "../store/ReduxStore";
 import { ImageShimmer } from "../components/shimmers/imageShimmer";
-const client=createClient(apiKey);
 
+const client=createClient(apiKey);
+async function downloadImage(url){
+    const response=await fetch(url); 
+    const blob=await response.blob();
+    const url2=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url2;
+    a.download=`pixefy-${new Date().getTime()}`;
+    a.click();
+}
 export function Image(){
     let liked=false;
     const [ImageData,setImageData]=useState(false)
     const id=useParams().id.toString();
+    console.log(typeof id);
     const {state}=useLocation();
     const likedArray=useSelector((state)=>{ return state.liked.imagesLiked; });
     likedArray.forEach(element => {
@@ -43,10 +53,10 @@ export function Image(){
                 <ButtonTwo text="Like" className={`${liked?'bg-red-500 text-white':'hover:bg-red-300'}  transition-all` } onclick={()=>{ !liked?disapatch(incrementLike(state)):disapatch(decrementLike(state)); }}><Heart strokeWidth={2.2} width={15} fill="white"/></ButtonTwo>
                 <div className="Download relative" onClick={()=> {setActive(!isActive)}}><ButtonTwo text={<div className="flex justify-center items-center gap-1 ">Download<ChevronDown strokeWidth={2.2} width={15}/></div>} className="bg-black text-white hover:bg-black/90"><Download width={15} strokeWidth={2.2}/></ButtonTwo>
                 {isActive&&<div className="overflow-hidden rounded-2xl shadow-(--shadow-thin-1) bg-white absolute bottom-0 left-0 translate-y-[105%] text-xs w-full">
-                    <div className="cursor-pointer w-full py-2 px-3 flex gap-1 justify-between items-center hover:bg-gray-200 transition-all" onClick={()=>{ let a=document.createElement('a'); a.href='https://images.pexels.com/photos/7283344/pexels-photo-7283344.jpeg'; a.download="image.jpeg"; a.click();  console.log("jaflksjdfklaj"); }}>Original<span className="text-xs text-gray-400">800 x 540</span></div>
-                    <div className="cursor-pointer w-full py-2 px-3 flex gap-1 justify-between items-center hover:bg-gray-200 transition-all">Small<span className="text-xs text-gray-400">400px</span></div>
-                    <div className="cursor-pointer w-full py-2 px-3 flex gap-1 justify-between items-center hover:bg-gray-200 transition-all">Medium<span className="text-xs text-gray-400">500px</span></div>
-                    <div className="cursor-pointer w-full py-2 px-3 flex gap-1 justify-between items-center hover:bg-gray-200 transition-all">Large<span className="text-xs text-gray-400">700px</span></div>
+                    <div className="cursor-pointer w-full py-2 px-3 flex gap-1 justify-between items-center hover:bg-gray-200 transition-all" onClick={()=>{ downloadImage(ImageData.src.original) }}>Original<span className="text-xs text-gray-400">800 x 540</span></div>
+                    <div className="cursor-pointer w-full py-2 px-3 flex gap-1 justify-between items-center hover:bg-gray-200 transition-all" onClick={()=>{ downloadImage(ImageData.src.small) }}>Small<span className="text-xs text-gray-400">400px</span></div>
+                    <div className="cursor-pointer w-full py-2 px-3 flex gap-1 justify-between items-center hover:bg-gray-200 transition-all" onClick={()=>{ downloadImage(ImageData.src.medium) }}>Medium<span className="text-xs text-gray-400">500px</span></div>
+                    <div className="cursor-pointer w-full py-2 px-3 flex gap-1 justify-between items-center hover:bg-gray-200 transition-all" onClick={()=>{ downloadImage(ImageData.src.large) }}>Large<span className="text-xs text-gray-400">700px</span></div>
                     </div>}</div>
                 <ButtonTwo text="Share"><Share2 strokeWidth={2.2} width={15}/></ButtonTwo>
                 </div>
