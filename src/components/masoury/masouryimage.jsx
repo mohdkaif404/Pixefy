@@ -11,8 +11,12 @@ import { MasouryShimmer } from "../shimmers/masouryShimmer";
 
 
 const client=new createClient(apiKey);
-export function MasouryImage({images,prompt,className,filters}){
-    const [category,setCategory]=useState({"home":"All"});
+export function MasouryImage({images,prompt,className,filters={
+    'orientation':"All",
+    'size':"All",
+    'color':"All",
+},isAppear=true,cate}){
+    const [category,setCategory]=useState({"home":cate||"All"});
     const [imagejson,setimagejson]=useState(undefined);
     const elemRef=useRef(null);
     
@@ -37,7 +41,7 @@ export function MasouryImage({images,prompt,className,filters}){
               
       
     return <>
-    <div className={`flex justify-center items-center overflow-x-auto md:flex-wrap gap-2 text-sm md:text-base py-1`}><Categories label={cat[0].label.toLocaleLowerCase()} cat={cat[0].cat} active={category.home.toLocaleLowerCase()} handleclick={setCategory}/></div>
-    {imagejson?<ImageGrid images={imagejson.photos} elemRef={elemRef}/>:<MasouryShimmer/>}
+    {isAppear&&<div className={`flex justify-center items-center overflow-x-auto md:flex-wrap gap-2 text-sm md:text-base py-1`}><Categories label={cat[0].label.toLocaleLowerCase()} cat={cat[0].cat} active={category.home.toLocaleLowerCase()} handleclick={setCategory}/></div>}
+    {imagejson?<ImageGrid images={imagejson.photos} elemRef={elemRef} category={category.home} filter={filters}/>:<MasouryShimmer/>}
     </>
 }
