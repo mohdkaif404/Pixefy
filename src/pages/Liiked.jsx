@@ -8,9 +8,9 @@ import { useSelector } from 'react-redux';
 
 
 export function Liked(){
-    const likedCount=useSelector((state)=>{ return state.liked.likedCount; })
     const likedimages=useSelector((state)=>{ return state.liked.imagesLiked})
-    console.log(likedCount); 
+    console.log(likedimages)
+    const likedCount=likedimages?Array.from(likedimages).length:0;
     return <>
     <div className="mt-25 md:mt-30 px-3 md:px-10 ">
         <h6 className="text-orange-600 font-semibold">Your collection</h6>

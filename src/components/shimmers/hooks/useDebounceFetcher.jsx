@@ -1,12 +1,10 @@
-import {createClient} from 'pexels'
 import { useEffect, useRef, useState } from 'react';
-import { apiKey } from '../../../constant';
 
 
-export function useDebounceFetcher(param,setimagejson,client,filter,setLoading){
+
+export function useDebounceFetcher(param,setimagejson,client,filter){
     const timerId=useRef(undefined);
 
-    // fetching all the required data 
     useEffect(()=>{
         if(!param) return;
         
@@ -14,11 +12,12 @@ export function useDebounceFetcher(param,setimagejson,client,filter,setLoading){
         clearTimeout(timerId.current);
         timerId.current=setTimeout(() => {
 
-            client.photos.search({ query, per_page: 40,...filter }).then(photos => {  setimagejson(photos); setLoading?.((val)=> !val); console.log()});
+            client.photos.search({ query, per_page: 40,...filter })
+            .then((photos) => {  setimagejson(photos);console.log("me") });
            
         }, 300);
         
         return ()=>{ clearTimeout(timerId); }
-    },[param,filter]);
+    },[param]);
     return;
 }

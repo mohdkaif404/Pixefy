@@ -5,7 +5,7 @@ import { filter } from "../../constant";
 
 export function FilterButton({setFilter,filters}) {
     const [isActive, setActive] = useState(false);
-    console.log(filters);
+
     return <>
         <SlidersHorizontal className={` ${isActive ? "bg-black text-white" : ""} p-2 rounded-full hover:bg-black hover:text-white transition-all cursor-pointer`} width={35} height={35} onClick={() => { setActive((a) => !a) }} />
         {isActive && <div className="w-full rounded-3xl font-semibold shadow-(--shadow-thin-1) h-fit p-5 bg-white backdrop-blur-3xl absolute bottom-0 left-0 translate-y-[105%]">
