@@ -1,6 +1,5 @@
 import { Link } from "react-router";
 import { ButtonTwo } from "../buttons/ButtonTwo";
-import { Download, Heart } from "lucide-react";
 
 export function ImageGrid({ images, className, elemRef ,filter,category}) {
     console.log("grid")

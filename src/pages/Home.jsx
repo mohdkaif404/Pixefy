@@ -1,9 +1,9 @@
 import { Categories } from "../components/categoriesBar/CateBar";
-import { FileTerminal, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { MasouryImage } from "../components/masoury/masouryimage";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { FilterButton } from "../components/buttons/FilterButton";
-import { useLocation, useNavigate } from "react-router";
+
 
 const filters={
     'orientation':"All",
@@ -12,9 +12,7 @@ const filters={
 }
 export function Home() {
     const [prompt,setPrompt]=useState("");
-    const [filter,setFilter]=useState(filters)
-    // console.log(filter)
-    const nav=useLocation();                                                                                                                                                                                                                                                                
+    const [filter,setFilter]=useState(filters);                                                                                                                                                                                                                                                               
 
     return <>
         <div className="mt-35 bg-amber px-2 md:px-5">

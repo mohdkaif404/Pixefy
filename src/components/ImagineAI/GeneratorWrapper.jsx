@@ -1,8 +1,7 @@
 import { GeneratorPanel } from "./GeneratorPanel";
 import { ImageGrid } from "../masoury/ImageGrid";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-let img=[]
 let count=0;
 export function GeneratorWrapper(){
     const [prompt,setPrompt]=useState("A cat");
@@ -14,12 +13,12 @@ export function GeneratorWrapper(){
        <ImageGrid images={[ 
              {
                 id: count,
-                name: 'Hills',
+                name: 'Ai Generated',
                 src: {
                     large:`https://image.pollinations.ai/prompt/${prompt}`,
-                    original:`https://image.pollinations.ai/prompt/${prompt}`
+                    original:`https://image.pollinations.ai/prompt/${prompt}`,
                 },
-                alt:"AI Generated",
+                alt:`AI Generated - ${prompt}`,
                 
             },
         ]}/>
