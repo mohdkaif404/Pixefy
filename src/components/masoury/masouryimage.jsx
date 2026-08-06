@@ -13,9 +13,7 @@ const client=new createClient(apiKey);
 export function MasouryImage({images,prompt,className,filters={},isAppear=true,cate}){
     const [category,setCategory]=useState({"home":cate||"All"});
     const [imagejson,setimagejson]=useState(undefined);
-
     const elemRef=useRef(null);
-    console.log("masoury")
     const query=prompt||category.home;
     useDebounceFetcher(query,setimagejson,client,filters||{});
     
@@ -25,7 +23,7 @@ export function MasouryImage({images,prompt,className,filters={},isAppear=true,c
         if(e[0].isIntersecting){
           console.log("diuir ")
           observer.unobserve(element);
-          client.photos.search({ query, per_page: 40, page:imagejson.page+1,...filters }).then(photos => { console.log(photos); setimagejson((prev)=>{ return {...photos,photos:[...prev.photos,...photos.photos]}}); console.log()});
+          client.photos.search({ query, per_page: 40, page:imagejson.page+1,...filters }).then(photos => { setimagejson((prev)=>{ return {...photos,photos:[...prev.photos,...photos.photos]}}); });
         }
         
       },{threshold:1});
