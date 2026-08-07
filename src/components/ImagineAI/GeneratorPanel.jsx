@@ -1,10 +1,11 @@
 import { Categories } from "../categoriesBar/CateBar"
 import { ButtonTwo } from "../buttons/ButtonTwo"
 import { PencilSparklesIcon } from "lucide-react"
-import { useState } from "react"
+import { useState ,memo} from "react"
 import { aicat } from "../../constant"
 
-export function GeneratorPanel({setPrompt}){
+export default memo(({setPrompt})=>{
+
     const [str,setstr]=useState('');
     return <>
     <div className="input flex flex-col p-3 shadow-(--shadow-spread) rounded-3xl w-full">
@@ -13,4 +14,4 @@ export function GeneratorPanel({setPrompt}){
             <ButtonTwo className="bg-orange-600 w-fit text-white ml-auto hover:scale-[1.03]"  text={"Generate"} onclick={()=>{setPrompt(str);}} ><PencilSparklesIcon width={16} strokeWidth={1.7} /></ButtonTwo>
     </div>
     </>
-}
+});

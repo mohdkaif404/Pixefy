@@ -4,11 +4,12 @@ import './index.css'
 import App from './App.jsx'
 import {createBrowserRouter, RouterProvider} from "react-router"
 import { Home } from './pages/Home.jsx'
-import { Liked } from '../../Liiked.jsx'
+import { Liked } from './pages/Liiked.jsx'
 import { Image } from './pages/image.jsx'
 import { Ai } from './pages/Ai.jsx'
 import { store } from './store/ReduxStore.jsx'
 import { Provider } from 'react-redux'
+
 const router = createBrowserRouter([
   {
     path: "/",

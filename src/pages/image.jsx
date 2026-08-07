@@ -22,10 +22,10 @@ async function downloadImage(url){
         a.href=url2;
         a.download=`pixefy-${new Date().getTime()}`;
         a.click();
-        throw new Error("error");
+
     }catch(err){
         console.log(err.message," we can catch and show a download failed dialog");  
-        redirect('/');
+
     }
     
 }
@@ -34,7 +34,7 @@ export function Image(){
     const [ImageData,setImageData]=useState(false)
     const id=useParams().id.toString();
     const {state,pathname}=useLocation();
-    const {item,filter,category}=state||{item:undefined,filter:{},category:'All'};
+    const {item,filter,category}=state||{item:undefined,filter:undefined,category:'All'};
     const likedArray=useSelector((state)=>{ return state.liked.imagesLiked; });
     const disapatch=useDispatch();
     const [isActive,setActive]=useState(false);
@@ -46,23 +46,25 @@ export function Image(){
             .then((val)=>{setImageData(val)})
             .catch((err)=>{
                 console.log("we can show any error if there is any error!!");
-                redirect('/');
+               
             }); 
         }
     
-    },[id])
+    },[id]); 
+
     useEffect(()=>{
         likedArray.forEach(element => {
            if(element.id==ImageData.id){ setLiked(!liked); }
         });
     },[ImageData])
+    
 
     
     return <>
     {ImageData&&<div className="bg-blue- my-26 px-3 md:px-20 h-screen">
         <Link to={'/'}><ButtonTwo text="Back"  className="hover:bg-gray-200 transition-all"><ArrowLeft className="w-5 aspect-square" strokeWidth={1.2}/></ButtonTwo></Link>
         <div className="image-wrapper flex gap-10 my-6 flex-col md:flex-row">
-            <div className="image w-full md:w-[60%] rounded-3xl overflow-hidden">{ImageData?<img src={ImageData.src.original}  alt="" className="w-full h-full aspect-square object-cover"/>:<ImageShimmer/>}</div>
+            <div className="image w-full md:w-[40%] rounded-3xl overflow-hidden">{ImageData?<img src={ImageData.src.original}  alt="" className="w-full h-full aspect-square object-cover"/>:<ImageShimmer/>}</div>
             <div className="image-info">
                 <div className="bg-gray-300 text-[10px] font-semibold text-gray-500 w-fit rounded-full p-1 px-2">{category?category.toUpperCase():"ALL"}</div>
                 <div className="image-name py-2 text-4xl">{ImageData.photographer}</div>
@@ -87,7 +89,7 @@ export function Image(){
             </div>
         </div>
         <div className="flex justify-between items-center"><h3 className="heading text-2xl md:text-4xl"><span className="text-orange-700">More</span> Like this</h3><Link to={"/"}><span className="text-gray-600 px-1 text-sm">Explore all</span><ArrowRightIcon className="inline text-gray-500 h-3 w-3" strokeWidth={1.5}/></Link></div>
-        <MasouryImage filters={filter} isAppear={false} cate={category}/>
+        <MasouryImage filters={ filter } isAppear={false} cate={category}/>
     </div>}
     </>
 }

@@ -1,4 +1,4 @@
-import { GeneratorPanel } from "./GeneratorPanel";
+import  GeneratorPanel  from "./GeneratorPanel";
 import { ImageGrid } from "../masoury/ImageGrid";
 import { useState } from "react";
 

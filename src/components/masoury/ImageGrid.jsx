@@ -1,8 +1,9 @@
 import { Link } from "react-router";
 import { ButtonTwo } from "../buttons/ButtonTwo";
+import { useEffect } from "react";
 
 export function ImageGrid({ images, className, elemRef ,filter,category}) {
-    console.log("grid")
+
     return <>
         <div className={`massoury columns-2 md:columns-3 gap-2 md:gap-3 w-full my-5  ${className}`} ref={elemRef}>
             {images.map((item, idx) => (
