@@ -3,7 +3,7 @@ import { MasouryImage } from '../components/masoury/masouryimage';
 import { Heart } from 'lucide-react';
 import { ButtonTwo } from '../components/buttons/ButtonTwo';
 import { ImageGrid } from '../components/masoury/ImageGrid';
-import { NoLikedCard } from '../components/Cards/NoLikedCard';
+import { Card1 } from '../components/Cards/Card1';
 import { useSelector } from 'react-redux';
 
 
@@ -18,7 +18,7 @@ export function Liked(){
         <h6 className="text-gray-600">{likedCount} Liked Images</h6>
         <div className="flex justify-center items-center ">
     </div>
-    {likedCount>0?<ImageGrid images={likedimages}/>:<NoLikedCard/>}
+    {likedCount>0?<ImageGrid images={likedimages}/>:<Card1 index={0}/>}
     </div>
     
     </>

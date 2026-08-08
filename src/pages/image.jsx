@@ -30,6 +30,7 @@ async function downloadImage(url){
     
 }
 export function Image(){
+    const [reload,setreload]=useState(true);
     const [liked,setLiked]=useState(false);
     const [ImageData,setImageData]=useState(false)
     const id=useParams().id.toString();
@@ -64,7 +65,7 @@ export function Image(){
     {ImageData&&<div className="bg-blue- my-26 px-3 md:px-20 h-screen">
         <Link to={'/'}><ButtonTwo text="Back"  className="hover:bg-gray-200 transition-all"><ArrowLeft className="w-5 aspect-square" strokeWidth={1.2}/></ButtonTwo></Link>
         <div className="image-wrapper flex gap-10 my-6 flex-col md:flex-row">
-            <div className="image w-full md:w-[40%] rounded-3xl overflow-hidden">{ImageData?<img src={ImageData.src.original}  alt="" className="w-full h-full aspect-square object-cover"/>:<ImageShimmer/>}</div>
+            <div className="image w-full md:w-[40%] rounded-3xl overflow-hidden">{reload&&<ImageShimmer/>}{ImageData?<img src={ImageData.src.original} onLoad={()=>{setreload(false)}} alt="" className="w-full h-full aspect-square object-cover"/>:<ImageShimmer/>}</div>
             <div className="image-info">
                 <div className="bg-gray-300 text-[10px] font-semibold text-gray-500 w-fit rounded-full p-1 px-2">{category?category.toUpperCase():"ALL"}</div>
                 <div className="image-name py-2 text-4xl">{ImageData.photographer}</div>
