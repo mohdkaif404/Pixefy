@@ -15,7 +15,7 @@ const likedSlice=createSlice({
             return state;
           },
         decrementLike:(state,action)=>{
-            
+
             const arr=state.imagesLiked.filter((elem)=>{ if(action.payload.id!=elem.id){ return elem; }});
             state.imagesLiked=arr;
             localStorage.setItem("imagesLiked",JSON.stringify(arr));
@@ -24,7 +24,7 @@ const likedSlice=createSlice({
 
     }
 })
-console.log(likedSlice)
+
 export const {decrementLike,incrementLike}=likedSlice.actions;
 const likedReducer=likedSlice.reducer;
 

@@ -1,5 +1,5 @@
 
-const arr=Array.from({length:40});
+const arr=Array.from({length:10});
 export function MasouryShimmer(){
 
     return (
