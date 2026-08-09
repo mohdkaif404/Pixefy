@@ -3,13 +3,12 @@ import { useEffect, useRef, useState,memo } from "react";
 import { Categories } from "../categoriesBar/CateBar"
 import { ImageGrid } from "./ImageGrid";
 import { cat , apiKey} from "../../constant";
-import { usePixefyFetcher } from "../../../hooks/useDebounceFetcher";
+import { usePixefyFetcher } from "../../hooks/useDebounceFetcher";
 import { ArrowRightIcon } from "lucide-react";
 import { createClient } from "pexels";
 import { MasouryShimmer } from "../shimmers/masouryShimmer";
 import { Card1 } from "../Cards/Card1";
 
-const client=new createClient(apiKey);
 const EMPTY_OBJ={};
 export const MasouryImage=memo(function MasouryImage({images,prompt,className,filters,isAppear=true,cate}){
     const [category,setCategory]=useState({"home":cate||"All"});

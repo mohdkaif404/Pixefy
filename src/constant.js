@@ -1,3 +1,4 @@
+import { createClient } from "pexels";
 export const filter = [
   {
     label: "Orientation",
@@ -48,3 +49,7 @@ export const cat = [{
 export const apiKey='rIq1qVLsxVgPM33XzNmn8YcJAsk2hNPkVMh9xJp8LfjHmvkmyLEOZMaF';
 
 export const aicat=['Photoreal',"Cinematic","Minimal","Watercolor","Neon","Editorial"]
+
+
+
+export const client = new createClient(apiKey);

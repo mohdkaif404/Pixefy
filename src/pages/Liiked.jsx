@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { MasouryImage } from '../components/masoury/masouryimage';
 import { Heart } from 'lucide-react';
-import { ButtonTwo } from '../components/buttons/ButtonTwo';
+import { Button } from '../components/buttons/Button';
 import { ImageGrid } from '../components/masoury/ImageGrid';
 import { Card1 } from '../components/Cards/Card1';
 import { useSelector } from 'react-redux';
