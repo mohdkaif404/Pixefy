@@ -20,8 +20,7 @@ export const MasouryImage=memo(function MasouryImage({images,prompt,className,fi
     {isAppear&&<div className="overflow-x-auto hide-scroll"><div className={`flex gap-2 p-1  w-fit mx-auto overflow-hidden `}><Categories label={cat[0].label.toLocaleLowerCase()} cat={cat[0].cat} active={category.home.toLocaleLowerCase()} handleclick={setCategory}/></div></div>}
     {error&&<Card1 index={1}/>}   
     {imagejson?<ImageGrid images={imagejson.photos} elemRef={elemRef} category={category.home} filter={filters} />:
-    !error&&<MasouryShimmer/>}
-    {isloading&&<MasouryShimmer/>}  
+    !error&&<MasouryShimmer/>} 
     
     </>
 });

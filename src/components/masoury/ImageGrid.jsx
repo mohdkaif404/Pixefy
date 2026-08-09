@@ -11,8 +11,8 @@ export function ImageGrid({ images, className='', elemRef ,filter,category}) {
                 <Link to={`/images/${item.id}`} state={{item,filter,category}} key={idx}>
                     <div  className="rounded-3xl overflow-hidden mb-2 md:mb-3" >
         
-                        <img loading="lazy"
-                            src={item.src.large||item.src.medium||item.src.original}
+                        <img 
+                            src={item.src.medium||item.src.large||item.src.original}
                             alt={item.alt||"image"}
                             className="w-full h-full object-cover"
                         />

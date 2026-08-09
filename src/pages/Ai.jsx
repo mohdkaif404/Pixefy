@@ -1,4 +1,4 @@
-import { Sparkle, Sparkles, PencilSparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { GeneratorWrapper } from "../components/ImagineAI/GeneratorWrapper";
 
 export function Ai() {
