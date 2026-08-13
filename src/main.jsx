@@ -9,6 +9,7 @@ import { Image } from './pages/image.jsx'
 import { Ai } from './pages/Ai.jsx'
 import { store } from './store/ReduxStore.jsx'
 import { Provider } from 'react-redux'
+import Error404 from './components/Errors/Error404.jsx'
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
 
     ]
   },
+  {
+    path:"*",
+    element:<Error404/>
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(

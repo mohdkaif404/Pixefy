@@ -1,9 +1,9 @@
 
 const arr=Array.from({length:10});
 export function MasouryShimmer(){
-
+    7
     return (
-    <div className={`massoury columns-2 md:columns-3 gap-2 md:gap-3 w-full my-5  `} >
+    <div className={`massoury columns-2 md:columns-3 gap-2 md:gap-3 w-full my-5  relative -z-10`} >
         {arr.map((elem,idx)=>{
             return <div key={idx} className={`${idx%3==0?'h-100':'h-60'} bg-gray-300 animate-pulse rounded-3xl overflow-hidden mb-2 md:mb-3`}></div>
         })}
