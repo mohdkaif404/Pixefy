@@ -1,7 +1,7 @@
 
 const arr=Array.from({length:10});
 export function MasouryShimmer(){
-    7
+    
     return (
     <div className={`massoury columns-2 md:columns-3 gap-2 md:gap-3 w-full my-5  relative -z-10`} >
         {arr.map((elem,idx)=>{

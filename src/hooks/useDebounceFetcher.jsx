@@ -10,7 +10,7 @@ export function usePixefyFetcher(query, filter) {
     useEffect(() => {
         if (!query) return;
 
-        setimagejson(null);
+       
         timerId.current = setTimeout(() => {
 
             client.photos.search({ query, per_page: 20, ...filter })
