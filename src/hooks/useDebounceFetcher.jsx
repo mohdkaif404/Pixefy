@@ -31,7 +31,8 @@ export function usePixefyFetcher(query, filter) {
             if (e[0].isIntersecting) {
                 setLoading(true);
                 observer.unobserve(element);
-
+                if(imagejson.total_results==0){ setLoading(false);  return; }
+        
                 client.photos.search({ query, per_page: 20, page: imagejson.page + 1, ...filter })
                     .then(photos => { setLoading(false); setimagejson((prev) => { return { ...photos, photos: [...prev.photos, ...photos.photos] } }); })
                     .catch((err) => {
