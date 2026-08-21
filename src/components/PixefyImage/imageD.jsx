@@ -17,7 +17,7 @@ function ImageD({category,item,id}) {
   
   return ( 
  imageData&&<div className="image-wrapper flex gap-10 my-6 flex-col md:flex-row">
-            <div className="image w-full md:w-[40%] rounded-3xl overflow-hidden">{reload&&<ImageShimmer/>}{imageData?<img src={imageData.src.original} onLoad={()=>{setreload(false)}} alt="" className="w-full h-full aspect-square object-cover"/>:<ImageShimmer/>}</div>
+            <div className="image w-full md:w-[40%] rounded-3xl overflow-hidden">{reload&&<ImageShimmer/>}{imageData?<img src={imageData.src.original} onLoad={()=>{setreload(false)}} alt="" className={`${reload?'w-0 h-0':'w-full h-full'} aspect-square object-cover`}/>:<ImageShimmer/>}</div>
             <div className="image-info">
                 <div className="bg-gray-300 text-[10px] font-semibold text-gray-500 w-fit rounded-full p-1 px-2">{category?category.toUpperCase():"ALL"}</div>
                 <div className="image-name py-2 text-4xl">{imageData.photographer}</div>
